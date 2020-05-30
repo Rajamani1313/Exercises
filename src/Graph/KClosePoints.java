@@ -19,7 +19,7 @@ class KClosePoints {
         System.out.println(kClosest(nums,1));
     }
     public static int[][] kClosest(int[][] points, int K) {
-        PriorityQueue<Integer> pq = new PriorityQueue();
+        PriorityQueue<Point> pq = new PriorityQueue();
         for (int[] point: points){
             if(pq.size() < K)
                 pq.offer(new Point(point));
