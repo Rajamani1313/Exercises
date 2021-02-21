@@ -22,6 +22,7 @@ public class TreeSerialize {
     }
 
     public static String serialize(TreeNode root) {
+
         StringBuilder traverse = new StringBuilder("[");
         Queue<TreeNode> que = new LinkedList<>();
         que.offer(root);

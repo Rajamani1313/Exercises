@@ -1,5 +1,7 @@
 package Graph;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 class Point implements Comparable<Point>{
@@ -15,28 +17,28 @@ class Point implements Comparable<Point>{
 }
 class KClosePoints {
     public static void main(String[] args){
-        int[][] nums={{1,0},{-2,-2}};
-        System.out.println(kClosest(nums,1));
+        int[][] nums={{3,3},{5,1},{-2,4}};
+        int[][] num1 = kClosest(nums,2);
+        System.out.println(Arrays.toString(num1[1]));
     }
     public static int[][] kClosest(int[][] points, int K) {
-        PriorityQueue<Point> pq = new PriorityQueue();
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)-> (b[0]*b[0]+b[1]*b[1]) - (a[0]*a[0]+a[1]*a[1]));
         for (int[] point: points){
             if(pq.size() < K)
-                pq.offer(new Point(point));
+                pq.offer(point);
             else{
-                Point p = pq.peek();
-                if ((p.x*p.x+p.y*p.y) > (point[0]*point[0]+point[1]*point[1])){
-                    pq.poll();
-                    pq.offer(new Point(point));
+                int[] p = pq.peek();
+                System.out.println(Arrays.toString(p));
+                if ((p[0]*p[0]+p[1]*p[1]) > (point[0]*point[0]+point[1]*point[1])){
+//                    System.out.println(pq.poll());
+                    pq.offer(point);
                 }
 
             }
         }
         int[][] result = new int[K][2];
         for(int i=0;i<K;i++){
-            Point p = pq.poll();
-            result[i][0] = p.x;
-            result[i][1] = p.y;
+            result[i] = pq.poll();
         }
         return result;
 

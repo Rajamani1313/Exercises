@@ -3,7 +3,7 @@ package Search;
 public class KthLargestNumber {
     public static void main(String[] args){
         int[] nums = {3,2,3,1,2,4,5,5,6};
-        System.out.println(findKthLargest(nums,4));
+        System.out.println(findKthLargest(nums,5));
     }
 
 /*
@@ -23,10 +23,11 @@ public class KthLargestNumber {
     public static int quickselect(int[] nums, int start, int end,int k){
         if(start==end)
             return nums[start];
-        int pivot= nums[(start+end)/2];
+        int pivot= nums[k-1];
         int l= start;
         int r=end;
         while(l<=r){
+
             while(l<=r && nums[l]>pivot)
                 l++;
             while(l<=r && nums[r]<pivot)
@@ -38,11 +39,14 @@ public class KthLargestNumber {
                 l++;
                 r--;
             }
+            for(int n: nums)
+                System.out.print(n+"|");
+            System.out.println();
         }
         for(int n: nums)
             System.out.print(n+" ");
-            System.out.println("--"+pivot+"start"+start+"end"+end);
-            System.out.println("--"+"left"+l+"right"+r);
+        System.out.println("--"+pivot+"start"+start+"end"+end);
+        System.out.println("--"+"left"+l+"right"+r);
 
         if(k-1<=r)
             return quickselect(nums,start,r,k);

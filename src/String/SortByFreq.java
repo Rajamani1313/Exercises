@@ -36,14 +36,17 @@ public class SortByFreq {
 
 
 
-      /*  HashMap<Character,Integer> map = new HashMap<>();
+      /* HashMap<Character,Integer> map = new HashMap<>();
         for (char c: s.toCharArray())
             map.put(c,map.getOrDefault(c,0)+1);
+            for(Map.Entry<Character,Integer> e: map.entrySet()){
+
+            }
 //        map.forEach((k,v)->System.out.println(k+"-"+v));
 //        map.entrySet().forEach(e->System.out.println(e.getKey()+"-"+e.getValue()));
-        PriorityQueue<Character> pq = new PriorityQueue<>((a,b)->map.get(b)-map.get(a));
+        PriorityQueue<Character> pq = new PriorityQueue<>();
         map.keySet().forEach(e->pq.offer(e));
-        StringBuilder str = new StringBuilder();
+//        StringBuilder str = new StringBuilder();
         while(!pq.isEmpty()){
             Character c = pq.poll();
             for (int i=0;i<map.get(c);i++)
